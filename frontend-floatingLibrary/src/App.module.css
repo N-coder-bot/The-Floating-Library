@@ -1,0 +1,67 @@
+:root{
+    --header:burlywood;
+    --hover:#214778;
+    --background:black;
+}
+body{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+    background: var(--background);
+   
+    
+}
+.header{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.options{
+    display: flex;
+    justify-content: space-around;
+   align-items: center;
+   width: 40%;
+}
+@font-face {
+    font-family: "AppleThin";   /*Can be any text*/
+    src: local("AppleThin"),
+      url("./assests/fonts/SF-Pro-Display-Thin.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "AppleLight";   /*Can be any text*/
+    src: local("AppleLight"),
+      url("./assests/fonts/SF-Pro-Display-Light.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "AppleRegular";   /*Can be any text*/
+    src: local("AppleRegular"),
+      url("./assests/fonts/SF-Pro-Display-Black.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "AppleMedium";   /*Can be any text*/
+    src: local("AppleMedium"),
+      url("./assests/fonts/SF-Pro-Display-Medium.ttf") format("truetype");
+  }
+#title{
+    font-family: "AppleRegular";
+    transition:1s;
+    color:var(--header);
+}
+
+#title:hover{
+   color:var(--hover);
+    transform:scale(1.3);
+}
+.options>a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-family: "AppleRegular";
+    color:var(--header);
+    transition: 0.5s;
+}
+.options>a:hover{
+    color:var(--hover);
+    transform: scale(1.3);
+}

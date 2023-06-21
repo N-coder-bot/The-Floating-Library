@@ -1,0 +1,81 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:white;
+    font-family: "AppleRegular";
+    animation: appear 1s 1 forwards;
+}
+@keyframes appear{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;  
+    }
+}
+
+.addform{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 2rem;
+    align-items: center;
+}
+.title{
+    font-family: "AppleRegular";
+    color:#e9b3ff;
+    text-align: center;
+    transition: 0.7s;
+}
+.title:hover{
+    color:white;
+    cursor: none;
+    transform: scale(1.1);
+    text-shadow: 3px 2px blueviolet;
+
+}
+.addform>label{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* .button{
+    width: 10%;
+} */
+
+.textfield{
+    border:0.1px solid grey;
+}
+.select{
+    background-color: white;
+    font-family: 'Courier New', Courier, monospace;
+    color:black;
+    transition: 0.5s;
+    width:10rem;
+    font-size: large;
+    border-radius: 0.3rem;
+    padding:0.3rem;
+    font-weight: bold;
+}
+.select:focus{
+    width:12rem;
+}
+.button{
+    font-size: larger;
+    width: 20%;
+    padding:0.4rem;
+    background-color: transparent;
+    color:rgb(123, 243, 243);
+    font-family: "AppleMedium";
+    border:0.01rem solid gold;
+    border-radius: 1rem;
+    transition-duration:0.3s;
+ }
+ .button:hover{
+     cursor:pointer;
+     transform: scale(1.1);
+     border:0.1rem solid palegoldenrod;
+     color:goldenrod;
+ }
