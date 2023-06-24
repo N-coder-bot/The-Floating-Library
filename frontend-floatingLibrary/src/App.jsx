@@ -11,6 +11,7 @@ import "./assests/fonts/SF-Pro-Display-Black.ttf";
 import "./assests/fonts/SF-Pro-Display-Medium.ttf";
 import "./assests/fonts/SF-Pro-Display-Light.ttf";
 import AddGenre from "./Pages/AddGenre/AddGenre";
+import Login from "./Pages/Login/Login";
 function App() {
   const changeThemeHome = () => {
     var r = document.querySelector(":root");
@@ -41,6 +42,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/SignUp" element={<Signup />}></Route>
+        <Route exact path="/Login" element={<Login />}></Route>
         <Route exact path="/Addbook" element={<Addbook />}></Route>
         <Route exact path="/Addauthor" element={<AddAuthor />}></Route>
         <Route exact path="/Addgenre" element={<AddGenre />}></Route>

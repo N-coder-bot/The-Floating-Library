@@ -4,12 +4,11 @@ import axios from "axios";
 function Signup() {
   const Detail = {
     name: "",
-    email: "",
     password: "",
     confirmPassword: "",
   };
   const [userDetails, setuserDetails] = useState(Detail);
-
+  const [error, seterror] = useState(false);
   const handleChange = (e) => {
     let item = e.target.name;
     let updatedDetails = userDetails;
@@ -23,9 +22,14 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/users", userDetails);
-    alert("Submitted successfully!");
-    window.location.reload();
+
+    if (userDetails.password !== userDetails.confirmPassword) {
+      seterror(true);
+    } else {
+      await axios.post("http://localhost:5000/users", userDetails);
+      alert("Submitted successfully!");
+      window.location.reload();
+    }
   };
   return (
     <div className={styles.container}>
@@ -38,15 +42,6 @@ function Signup() {
             name="name"
             onChange={handleChange}
             value={userDetails.name}
-          />
-        </label>
-        <label htmlFor="email" className={styles.label}>
-          <span>Email</span>
-          <input
-            type="email"
-            name="email"
-            onChange={handleChange}
-            value={userDetails.email}
           />
         </label>
         <label htmlFor="password" className={styles.label}>
@@ -71,6 +66,12 @@ function Signup() {
           Sign Up
         </button>
       </form>
+      {error && (
+        <div className={styles.error}>
+          Make sure password and confirm Password are same or try another
+          Username.
+        </div>
+      )}
     </div>
   );
 }
