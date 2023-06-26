@@ -12,6 +12,8 @@ import "./assests/fonts/SF-Pro-Display-Medium.ttf";
 import "./assests/fonts/SF-Pro-Display-Light.ttf";
 import AddGenre from "./Pages/AddGenre/AddGenre";
 import Login from "./Pages/Login/Login";
+import { useState, useEffect } from "react";
+import axios from "axios";
 function App() {
   const changeThemeHome = () => {
     var r = document.querySelector(":root");
@@ -25,6 +27,22 @@ function App() {
     r.style.setProperty("--hover", "white");
     r.style.setProperty("--background", "#214778");
   };
+  const [logged, setlogged] = useState(false);
+  const [token, settoken] = useState(localStorage.getItem("token"));
+  useEffect(() => {
+    const verifyUser = async () => {
+      const response = await axios.get("http://localhost:8000/users/verify", {
+        withCredentials: true,
+        headers: {
+          Authorization: `${token}`,
+        },
+      });
+      if (response.data.success) setlogged(true);
+      else setlogged(false);
+    };
+    verifyUser();
+  }, []);
+
   return (
     <Router>
       <div className={styles.header}>
@@ -43,9 +61,26 @@ function App() {
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/SignUp" element={<Signup />}></Route>
         <Route exact path="/Login" element={<Login />}></Route>
-        <Route exact path="/Addbook" element={<Addbook />}></Route>
-        <Route exact path="/Addauthor" element={<AddAuthor />}></Route>
-        <Route exact path="/Addgenre" element={<AddGenre />}></Route>
+        {logged ? (
+          <Route exact path="/Addbook" element={<Addbook />}></Route>
+        ) : (
+          <></>
+        )}
+        {logged ? (
+          <Route exact path="/Addauthor" element={<AddAuthor />}></Route>
+        ) : (
+          <></>
+        )}
+        {logged ? (
+          <Route exact path="/Addgenre" element={<AddGenre />}></Route>
+        ) : (
+          <></>
+        )}
+        {logged ? (
+          <Route exact path="/Profile" element={<AddGenre />}></Route>
+        ) : (
+          <></>
+        )}
       </Routes>
     </Router>
   );

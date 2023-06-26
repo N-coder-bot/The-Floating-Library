@@ -3,6 +3,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const jsonwebtoken = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
+const verify = require("../middlewares/verify");
 require("../config/passport");
 router.post("/signUp", async (req, res, next) => {
   try {
@@ -12,23 +14,14 @@ router.post("/signUp", async (req, res, next) => {
     res.json({ success: true, user: user });
   } catch (error) {}
 });
-router.get(
-  "/protected",
-  passport.authenticate("jwt", { session: false }),
-  (req, res, next) => {
-    res.status(200).json({
-      success: true,
-      msg: "You are successfully authenticated to this route!",
-    });
-  }
-);
+router.get("/verify", auth.auth, verify);
 router.get("/login", (req, res) => {
   res.render("login");
 });
 router.post("/login", async (req, res, next) => {
-  console.log(req.body.username);
+  // console.log(req.body.username);
   const user = await User.findOne({ username: req.body.username });
-  console.log(user);
+  // console.log(user);
   if (!user) {
     return res.status(401).json({ success: false, msg: "could not find user" });
   }

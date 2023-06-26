@@ -23,5 +23,10 @@ require("./config/database");
 //initialising passport.
 app.use(passport.initialize());
 require("./config/passport")(passport);
-app.use("/users", require("./routes/users"));
+const homeRouter = require("./routes/home");
+const usersRouter = require("./routes/users");
+const catalogRouter = require("./routes/catalog");
+app.use("/", homeRouter);
+app.use("/users", usersRouter);
+app.use("/catalog", catalogRouter);
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

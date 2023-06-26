@@ -31,13 +31,14 @@ function Login() {
     );
     alert("Submitted successfully!");
     localStorage.setItem("token", response.data.token);
-    const token = localStorage.getItem("token");
-    await axios.get("http://localhost:8000/users/protected", {
-      withCredentials: true,
-      headers: {
-        Authorization: `${token}`,
-      },
-    });
+    window.location = "/Profile";
+    // const token = localStorage.getItem("token");
+    // await axios.get("http://localhost:8000/users/protected", {
+    //   withCredentials: true,
+    //   headers: {
+    //     Authorization: `${token}`,
+    //   },
+    // });
     // console.log(anotherresponse.data);
   };
   return (

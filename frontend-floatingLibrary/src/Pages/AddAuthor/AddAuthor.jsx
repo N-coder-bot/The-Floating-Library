@@ -24,9 +24,16 @@ function AddAuthor() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     await axios.post(
-      "http://localhost:5000/catalog/author/create",
-      authorDetails
+      "http://localhost:8000/catalog/author/create",
+      authorDetails,
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: `${token}`,
+        },
+      }
     );
     // console.log(response.data);
   };

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./addbook.module.css";
+import { Link } from "react-router-dom";
 function Addbook() {
   const [authors, setauthors] = useState([]);
   const [genres, setgenres] = useState([]);
@@ -21,7 +22,7 @@ function Addbook() {
     r.style.setProperty("--background", "black");
   };
   const getAuthors = async () => {
-    const response = await axios.get("http://localhost:5000/catalog/authors");
+    const response = await axios.get("http://localhost:8000/catalog/authors");
     setauthors(response.data);
     let data = response.data;
     details.author = data[0];
@@ -31,7 +32,7 @@ function Addbook() {
     }));
   };
   const getGenres = async () => {
-    const response = await axios.get("http://localhost:5000/catalog/genres");
+    const response = await axios.get("http://localhost:8000/catalog/genres");
     setgenres(response.data);
     let data = response.data;
     details.genre = data[0];
@@ -46,7 +47,9 @@ function Addbook() {
     getGenres();
     changeTheme();
   }, []);
-
+  const handleAddAuthor = () => {
+    window.location.href = "/Addauthor";
+  };
   const handleChange = (e) => {
     let updateDetails = bookdetails;
     let name = e.target.name;
@@ -63,7 +66,7 @@ function Addbook() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/catalog/book/create", bookdetails);
+    await axios.post("http://localhost:8000/catalog/book/create", bookdetails);
     alert("book added successfully!");
     window.location.reload();
     // console.log(bookdetails);
@@ -90,6 +93,9 @@ function Addbook() {
               </option>
             ))}
           </select>
+          <button onClick={handleAddAuthor}>
+            <Link to="/Addauthor">Add author</Link>
+          </button>
         </label>
         <label htmlFor="title">
           <span className={styles.labels}>Title of Book:</span>
@@ -114,18 +120,7 @@ function Addbook() {
             placeholder="Enter Summary"
           />
         </label>
-        <label htmlFor="isbn">
-          <span className={styles.labels}>ISBN</span>
-          <input
-            type="text"
-            name="isbn"
-            id="isbn"
-            className={styles.textfield}
-            onChange={handleChange}
-            value={bookdetails.isbn}
-            placeholder="10 digit ISBN No."
-          />
-        </label>
+
         <label htmlFor="genre">
           <span className={styles.labels}>Genre:</span>
           <select
