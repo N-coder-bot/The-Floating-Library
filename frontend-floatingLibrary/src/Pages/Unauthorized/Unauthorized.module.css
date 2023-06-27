@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    height: 50vh;
+    max-height: 700px;
+    justify-content: center;
+    align-items: center;
+    color:cadetblue;
+    transition: all 0.4s;
+    font-size: 3rem;
+    font-family: AppleLight;
+}

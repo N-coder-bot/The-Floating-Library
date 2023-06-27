@@ -1,6 +1,7 @@
 const Book = require("../models/book");
 const Author = require("../models/author");
 const Genre = require("../models/genre");
+const User = require("../models/User");
 exports.index = (req, res) => {
   res.send("NOT IMPLEMENTED: Site Home Page");
 };
@@ -35,8 +36,14 @@ exports.book_create_get = (req, res) => {
 // Handle book create on POST.
 exports.book_create_post = async (req, res) => {
   const data = req.body;
-  const response = await Book.create(data);
-  res.json(response);
+  const user = req.user;
+  // console.log(req.user);
+  const book = await Book.create({ ...data, user: user._id });
+  user.books.push(book);
+  await User.findByIdAndUpdate(user._id, { books: user.books });
+  //forgot to put await above and cost a good amount of time. :(
+  // console.log(user);
+  res.json(book);
 };
 
 // Display book delete form on GET.

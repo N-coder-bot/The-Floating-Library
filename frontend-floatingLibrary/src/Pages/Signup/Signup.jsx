@@ -3,7 +3,7 @@ import styles from "./Signup.module.css";
 import axios from "axios";
 function Signup() {
   const Detail = {
-    name: "",
+    username: "",
     password: "",
     confirmPassword: "",
   };
@@ -11,6 +11,7 @@ function Signup() {
   const [error, seterror] = useState(false);
   const handleChange = (e) => {
     let item = e.target.name;
+    console.log(item);
     let updatedDetails = userDetails;
     updatedDetails[`${item}`] = e.target.value;
 
@@ -26,22 +27,23 @@ function Signup() {
     if (userDetails.password !== userDetails.confirmPassword) {
       seterror(true);
     } else {
-      await axios.post("http://localhost:5000/users", userDetails);
+      console.log(userDetails);
+      await axios.post("http://localhost:8000/users/signUp", userDetails);
       alert("Submitted successfully!");
       window.location.reload();
     }
   };
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Make an account, go ahead it's free</h1>
+      <h1 className={styles.title}>Make an account, go ahead its free</h1>
       <form className={styles.form}>
-        <label htmlFor="name" className={styles.label}>
+        <label htmlFor="username" className={styles.label}>
           <span>Name</span>
           <input
             type="text"
-            name="name"
+            name="username"
             onChange={handleChange}
-            value={userDetails.name}
+            value={userDetails.username}
           />
         </label>
         <label htmlFor="password" className={styles.label}>

@@ -35,6 +35,8 @@ function AddAuthor() {
         },
       }
     );
+    alert("Author added successfully");
+    window.location.reload();
     // console.log(response.data);
   };
   return (

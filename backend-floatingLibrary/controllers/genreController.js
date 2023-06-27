@@ -20,9 +20,6 @@ exports.genre_create_get = (req, res) => {
 exports.genre_create_post = async (req, res) => {
   const data = req.body;
   const response = await Genre.create(data);
-  response.save(function (err) {
-    if (err) console.log(err);
-  });
   res.json(response);
 };
 

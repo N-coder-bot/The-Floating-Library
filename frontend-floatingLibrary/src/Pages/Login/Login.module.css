@@ -14,7 +14,7 @@
     background-color:#214778;
     gap:2rem;
     flex-wrap: wrap;
-
+    padding:3rem;
 }
 .label>span{
     font-family: "AppleRegular";
@@ -42,12 +42,10 @@ input{
     outline: none;
     border-radius: 1rem;
     border:1px solid black;
-    width:10rem;
 }
 input:focus{
     border-color: white;
-    transition: 0.9s;
-    width:13rem;
+    transition: 0.3s;
 }
 .label{
     width: 70%;
@@ -56,20 +54,27 @@ input:focus{
     flex-wrap: wrap;
 }
 .button{
-   font-size: larger;
-   width: 20%;
-   padding:0.4rem;
-   background-color: transparent;
-   color:black;
-   font-family: "AppleMedium";
-   border:0.01rem solid white;
-   border-radius: 1rem;
-   transition-duration:0.4s;
-   transition-timing-function:ease-in-out;
-}
-.button:hover{
-    cursor:pointer;
-    transform: scale(1.1);
-    border:0.1rem solid black;
+    font-size: larger;
+    width: 20%;
+    padding:0.3rem 0 0.3rem 0;
+    text-align: center;
+    background-color: transparent;
     color:white;
-}
+    font-family: "AppleMedium";
+    border:0.1rem solid white;
+    border-radius: 1rem;
+    transition-duration:0.3s;
+    -webkit-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+ -moz-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+ box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+ }
+ .button:hover{
+     cursor:pointer;
+     border-color:black;
+     color:black;
+     background-color: white;
+     -webkit-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+ -moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+ box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+     
+ }

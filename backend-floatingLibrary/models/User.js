@@ -14,16 +14,11 @@ const UserSchema = new Schema({
     },
   },
   author: [{ type: mongoose.ObjectId, ref: "Author" }],
-  book: [{ type: mongoose.ObjectId, ref: "Book" }],
+  books: [{ type: mongoose.ObjectId, ref: "Book" }],
 });
 
 // Hashing the password with a salt value of 10 before saving.
 UserSchema.pre("save", async function (next) {
-  this.confirmPassword = undefined;
-  if (!this.isModified("password")) {
-    return next();
-  }
-
   try {
     const existingUser = await this.model("User").findOne({
       username: this.username,
@@ -35,6 +30,7 @@ UserSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(this.password, salt);
     this.password = hash;
+    this.confirmPassword = this.password;
     next();
   } catch (error) {
     return next(error);

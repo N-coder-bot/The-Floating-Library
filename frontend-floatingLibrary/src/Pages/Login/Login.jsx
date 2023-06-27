@@ -31,7 +31,7 @@ function Login() {
     );
     alert("Submitted successfully!");
     localStorage.setItem("token", response.data.token);
-    window.location = "/Profile";
+    window.location = "/";
     // const token = localStorage.getItem("token");
     // await axios.get("http://localhost:8000/users/protected", {
     //   withCredentials: true,

@@ -16,7 +16,7 @@ router.get("/", book_controller.index);
 router.get("/book/create", book_controller.book_create_get);
 
 // POST request for creating Book.
-router.post("/book/create", book_controller.book_create_post);
+router.post("/book/create", auth, book_controller.book_create_post);
 
 // GET request to delete Book.
 router.get("/book/:id/delete", book_controller.book_delete_get);
@@ -42,7 +42,7 @@ router.get("/books", book_controller.book_list);
 router.get("/author/create", author_controller.author_create_get);
 
 // POST request for creating Author.
-router.post("/author/create", auth.auth, author_controller.author_create_post);
+router.post("/author/create", auth, author_controller.author_create_post);
 
 // GET request to delete Author.
 router.get("/author/:id/delete", author_controller.author_delete_get);

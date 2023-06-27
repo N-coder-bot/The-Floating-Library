@@ -17,8 +17,14 @@ function AddGenre() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post(
-      "http://localhost:5000/catalog/genre/create",
-      genreDetails
+      "http://localhost:8000/catalog/genre/create",
+      genreDetails,
+      {
+        withCredentials: true,
+        headers: {
+          Authorization: `${localStorage.getItem("token")}`,
+        },
+      }
     );
     alert("Genre Added to Collection Successfully!");
     window.location.reload();

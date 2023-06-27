@@ -66,7 +66,10 @@ function Addbook() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8000/catalog/book/create", bookdetails);
+    await axios.post("http://localhost:8000/catalog/book/create", bookdetails, {
+      withCredentials: true,
+      headers: { Authorization: `${localStorage.getItem("token")}` },
+    });
     alert("book added successfully!");
     window.location.reload();
     // console.log(bookdetails);
@@ -93,9 +96,8 @@ function Addbook() {
               </option>
             ))}
           </select>
-          <button onClick={handleAddAuthor}>
-            <Link to="/Addauthor">Add author</Link>
-          </button>
+
+          <Link to="/Addauthor">Add author</Link>
         </label>
         <label htmlFor="title">
           <span className={styles.labels}>Title of Book:</span>
@@ -137,6 +139,7 @@ function Addbook() {
               </option>
             ))}
           </select>
+          <Link to="/Addgenre">Add genre</Link>
         </label>
         <button onClick={handleSubmit} className={styles.button}>
           Add book

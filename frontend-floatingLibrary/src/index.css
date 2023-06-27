@@ -1,0 +1,53 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  html, body {
+    height: 100%;
+  }
+  :root{
+    --header:burlywood;
+    --hover:#214778;
+    --background:black;
+}
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-color: black;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  #root, #__next {
+    isolation: isolate;
+  }  
+  
+@font-face {
+    font-family: "AppleThin";   /*Can be any text*/
+    src: local("AppleThin"),
+      url("./assests/fonts/SF-Pro-Display-Thin.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "AppleLight";   /*Can be any text*/
+    src: local("AppleLight"),
+      url("./assests/fonts/SF-Pro-Display-Light.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "AppleRegular";   /*Can be any text*/
+    src: local("AppleRegular"),
+      url("./assests/fonts/SF-Pro-Display-Black.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "AppleMedium";   /*Can be any text*/
+    src: local("AppleMedium"),
+      url("./assests/fonts/SF-Pro-Display-Medium.ttf") format("truetype");
+  }
