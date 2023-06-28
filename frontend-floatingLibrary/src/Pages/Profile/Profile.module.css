@@ -1,4 +1,29 @@
 .container {
     display: flex;
     width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    border: 0.3px solid red;
+    height: 100vh;
+}
+.booksContainer {
+    width: 70%;
+    border:1px solid green;
+    max-height: 640px;
+}
+.profileContainer{
+    width: 30%;
+    border:1px solid pink;
+    font-family: AppleLight;
+    max-height: 640px;
+}
+.title{
+    text-align: center;
+    color:#4DB6AC;
+}
+.error{
+    color:red;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: aliceblue;
 }

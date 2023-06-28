@@ -47,9 +47,7 @@ function Addbook() {
     getGenres();
     changeTheme();
   }, []);
-  const handleAddAuthor = () => {
-    window.location.href = "/Addauthor";
-  };
+
   const handleChange = (e) => {
     let updateDetails = bookdetails;
     let name = e.target.name;

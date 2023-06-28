@@ -6,13 +6,6 @@ const { Schema, model } = mongoose;
 const UserSchema = new Schema({
   username: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  confirmPassword: {
-    type: String,
-    required: true,
-    validate: function () {
-      return this.confirmPassword === this.password;
-    },
-  },
   author: [{ type: mongoose.ObjectId, ref: "Author" }],
   books: [{ type: mongoose.ObjectId, ref: "Book" }],
 });
@@ -30,13 +23,31 @@ UserSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(this.password, salt);
     this.password = hash;
-    this.confirmPassword = this.password;
     next();
   } catch (error) {
     return next(error);
   }
 });
 
+//pre find one and update hook.
+UserSchema.pre("findOneAndUpdate", async function (next) {
+  // Check if the password field is being modified
+  if (this._update.password) {
+    try {
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(this._update.password, salt);
+      this._update.password = hash;
+    } catch (error) {
+      return next(error);
+    }
+  }
+  // Check if the username field is being modified
+  if (this._update.username) {
+    // Update the username field with the new value
+    this._update.username = this._update.username;
+  }
+  next();
+});
 // Adding a Schema method "isValidPassword" to ensure that
 // the user trying to login has the correct credentials.
 UserSchema.methods.isValidPassword = async function (password) {

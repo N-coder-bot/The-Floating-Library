@@ -5,6 +5,7 @@ const {
   userLogin,
   userSignup,
   getUser,
+  updateUser,
 } = require("../controllers/userController");
 const auth = require("../middlewares/auth");
 const verify = require("../middlewares/verify");
@@ -17,6 +18,8 @@ router.post("/login", userLogin);
 router.get("/verify", auth, verify);
 //get user.
 router.get("/user", auth, getUser);
+//update user
+router.post("/updateUser/:id", updateUser);
 // router.get("/login", (req, res) => {
 //   res.render("login");
 // });

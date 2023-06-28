@@ -32,7 +32,7 @@ const userSignup = async (req, res, next) => {
     res.json({ success: true });
   } catch (error) {
     console.log(error);
-    res.status(401);
+    res.status(401).json(error);
   }
 };
 
@@ -40,4 +40,16 @@ const userSignup = async (req, res, next) => {
 const getUser = async (req, res) => {
   res.json({ user: req.user });
 };
-module.exports = { userLogin, userSignup, getUser };
+
+//update user.
+const updateUser = async (req, res) => {
+  try {
+    const newData = req.body;
+    await User.findByIdAndUpdate(req.params.id, newData);
+    res.json({ msg: "edit success!" });
+  } catch (error) {
+    console.log(error);
+    res.status(403);
+  }
+};
+module.exports = { userLogin, userSignup, getUser, updateUser };

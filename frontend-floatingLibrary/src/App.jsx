@@ -20,13 +20,12 @@ import { UserContext, UserProvider } from "./contexts/UserContext";
 function App() {
   const user = useContext(UserContext);
   const [logged, setLogged] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("token"));
   useEffect(() => {
     // console.log(user);
     if (user) setLogged(true);
     else setLogged(false);
   }, [user]);
-
+  console.log("hi from App");
   return (
     <Router>
       <div className={styles.header}>
@@ -44,7 +43,7 @@ function App() {
               <button
                 type="button"
                 onClick={() => {
-                  setToken(localStorage.removeItem("token"));
+                  localStorage.removeItem("token");
                   window.location = "/";
                 }}
               >
