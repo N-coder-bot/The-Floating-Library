@@ -19,7 +19,7 @@ router.get("/verify", auth, verify);
 //get user.
 router.get("/user", auth, getUser);
 //update user
-router.post("/updateUser/:id", updateUser);
+router.put("/updateUser/:id", auth, updateUser);
 // router.get("/login", (req, res) => {
 //   res.render("login");
 // });
