@@ -14,8 +14,7 @@ import "./assests/fonts/SF-Pro-Display-Light.ttf";
 import AddGenre from "./Pages/AddGenre/AddGenre";
 import Login from "./Pages/Login/Login";
 import { useState, useEffect, useContext } from "react";
-import axios from "axios";
-import { UserContext, UserProvider } from "./contexts/UserContext";
+import { UserContext } from "./contexts/UserContext";
 
 function App() {
   const user = useContext(UserContext);
@@ -25,7 +24,7 @@ function App() {
     if (user) setLogged(true);
     else setLogged(false);
   }, [user]);
-  console.log("hi from App");
+  // console.log("hi from App");
   return (
     <Router>
       <div className={styles.header}>

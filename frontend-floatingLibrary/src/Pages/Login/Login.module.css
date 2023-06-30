@@ -11,10 +11,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:#214778;
+    background-color:white;
     gap:2rem;
     flex-wrap: wrap;
     padding:3rem;
+    min-height: 500px;
+    max-height: 600px;
 }
 .label>span{
     font-family: "AppleRegular";
@@ -25,28 +27,24 @@
     font-family: "AppleRegular";
     color:black;
     text-align: center;
-    transition: 0.7s;
+    transition: 0.3s;
 }
 .title:hover{
     transform: scale(1.1);
-    color:white;
+    color:#606C5D;
     cursor: none;
-    text-shadow: 4px 3px black;
 }
-input{
-   background-color: transparent;
-    color: white;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
+.form input{
+    background-color: transparent;
+    color: black;
+    font-family: AppleLight;
     padding:0.7rem;
     outline: none;
     border-radius: 1rem;
     border:1px solid black;
+    transition: all 0.1s;
 }
-input:focus{
-    border-color: white;
-    transition: 0.3s;
-}
+
 .label{
     width: 70%;
     display: flex;
@@ -59,7 +57,6 @@ input:focus{
     padding:0.3rem 0 0.3rem 0;
     text-align: center;
     background-color: transparent;
-    color:white;
     font-family: "AppleMedium";
     border:0.1rem solid white;
     border-radius: 1rem;
@@ -78,3 +75,13 @@ input:focus{
  box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
      
  }
+ .error{
+    color:#272343;
+    font-family: AppleLight;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #BAE8E8;
+    padding:1.3rem;
+    border-radius: 0.75rem;
+}

@@ -3,17 +3,38 @@
     width: 100%;
     max-width: 1250px;
     margin: 0 auto;
-    border: 0.3px solid red;
+    /* border: 0.3px solid red; */
     height: 100vh;
+    background-color: #BAE8E8;
+}
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:1rem;
+}
+.profileContainer{
+    background-color: #E3F6F5;
+}
+
+.form input{
+    background-color: transparent;
+    color: black;
+    font-family: AppleLight;
+    padding:0.7rem;
+    outline: none;
+    border-radius: 1rem;
+    border:1px solid black;
+    transition: all 0.1s;
 }
 .booksContainer {
     width: 70%;
-    border:1px solid green;
+    /* border:1px solid green; */
     max-height: 640px;
 }
 .profileContainer{
     width: 30%;
-    border:1px solid pink;
+    /* border:1px solid pink; */
     font-family: AppleLight;
     max-height: 640px;
 }
@@ -21,9 +42,33 @@
     text-align: center;
     color:#4DB6AC;
 }
+#goback{
+    width:5rem;
+}
 .error{
-    color:red;
+    color:#272343;
+    font-family: AppleLight;
+    font-weight: bolder;
     text-align: center;
     margin-top: 1rem;
-    background-color: aliceblue;
+    background-color: #BAE8E8;
+    padding:1.3rem;
+    border-radius: 0.75rem;
+}
+
+.btn{
+    background-color: #272343;
+    border: none;
+    color:#FFFFFF;
+    border-radius:0.3rem;
+    padding:0.2rem;
+    width:10rem;
+    transition: all 0.3s;
+    font-family: AppleLight;
+    margin: 1.7rem 0 0 2rem;
+
+}
+.btn:hover {
+    background-color: #4DB6AC;
+    color:black;
 }

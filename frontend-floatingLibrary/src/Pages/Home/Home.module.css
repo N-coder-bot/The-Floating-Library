@@ -4,7 +4,6 @@ flex-direction: column;
 align-items: center;
 font-family: "AppleMedium";
 height: 100%;
-background-color: black;
 }
 .title{
     font-family: "AppleRegular";
@@ -25,7 +24,7 @@ background-color: black;
     }
     to{
         opacity:1;
-        color:blueviolet;
+        color:#BAE8E8;
     }
 }
 .box{
@@ -37,7 +36,7 @@ background-color: black;
 
 .cardText{
     font-size: 2rem;
-    color: blueviolet;
+    color: white;
     opacity: 0;
     animation: downtoup  1s 1.5s 1 forwards;
 
@@ -54,7 +53,7 @@ background-color: black;
 .card{
     height: 150px;
     width: 150px;
-    background-color:#1764e1;
+    background-color:#FFF4F4;
     border-radius: 0.3rem;
     opacity:0;
     padding:1rem;
@@ -64,15 +63,18 @@ background-color: black;
 }
  .card:hover{
     box-shadow: 10px 5px white;
-    background-color:blueviolet;
     cursor: pointer;
- }
+    color:black;
+    background-color:#BAE8E8;
+}
 
 .card>a{
     font-size: smaller;
     font-family: "AppleLight";
-    color:black;
     text-decoration: none;
-   
+    color:black;
 }
+/* .card:hover a{
+    color:blueviolet;
+} */
 
