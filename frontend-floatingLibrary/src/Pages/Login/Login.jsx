@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import axios from "axios";
 function Login() {
@@ -7,7 +7,7 @@ function Login() {
     password: "",
   };
   const [userDetails, setuserDetails] = useState(Detail);
-  const [error, seterror] = useState(false);
+  const [error, seterror] = useState("");
   const handleChange = (e) => {
     let item = e.target.name;
     let updatedDetails = userDetails;
@@ -18,32 +18,44 @@ function Login() {
       ...updatedDetails,
     }));
   };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      seterror("");
+    }, 3000);
 
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [error]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userDetails);
-    const response = await axios.post(
-      "http://localhost:8000/users/login",
-      userDetails,
-      {
-        withCredentials: true,
+    // console.log(userDetails);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/users/login",
+        userDetails,
+        {
+          withCredentials: true,
+        }
+      );
+      alert("Submitted successfully!");
+      localStorage.setItem("token", response.data.token);
+      window.location = "/";
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        if (error.response.data.msg === "could not find user") {
+          seterror("Could not find user.");
+        } else {
+          seterror("Invalid password.");
+        }
+      } else {
+        seterror("An error occurred. Please try again later.");
       }
-    );
-    alert("Submitted successfully!");
-    localStorage.setItem("token", response.data.token);
-    window.location = "/";
-    // const token = localStorage.getItem("token");
-    // await axios.get("http://localhost:8000/users/protected", {
-    //   withCredentials: true,
-    //   headers: {
-    //     Authorization: `${token}`,
-    //   },
-    // });
-    // console.log(anotherresponse.data);
+    }
   };
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Login to your ccount.</h1>
+      <h1 className={styles.title}>Login to your Account.</h1>
       <form className={styles.form}>
         <label htmlFor="username" className={styles.label}>
           <span>Name</span>
@@ -52,6 +64,8 @@ function Login() {
             name="username"
             onChange={handleChange}
             value={userDetails.name}
+            placeholder="Username"
+            required
           />
         </label>
         <label htmlFor="password" className={styles.label}>
@@ -61,18 +75,15 @@ function Login() {
             name="password"
             onChange={handleChange}
             value={userDetails.password}
+            placeholder="Password"
+            required
           />
         </label>
         <button onClick={handleSubmit} className={styles.button}>
           Login
         </button>
       </form>
-      {error && (
-        <div className={styles.error}>
-          Make sure password and confirm Password are same or try another
-          Username.
-        </div>
-      )}
+      {error.length !== 0 && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

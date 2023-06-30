@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Signup.module.css";
 import axios from "axios";
 function Signup() {
@@ -7,8 +7,21 @@ function Signup() {
     password: "",
     confirmPassword: "",
   };
-  const [userDetails, setuserDetails] = useState(Detail);
-  const [error, seterror] = useState(false);
+  const [userDetails, setuserDetails] = useState(Detail); //store user details.
+  const [error, seterror] = useState(""); // to store error.
+
+  // so error disappears in 5 seconds.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      seterror("");
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [error]);
+
+  // form data handling.
   const handleChange = (e) => {
     let item = e.target.name;
     console.log(item);
@@ -21,18 +34,25 @@ function Signup() {
     }));
   };
 
+  //form data submitting and signing up a new user.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (userDetails.password !== userDetails.confirmPassword) {
-      seterror(true);
+      seterror("Password and Confirm Password must be same");
     } else {
-      console.log(userDetails);
-      await axios.post("http://localhost:8000/users/signUp", userDetails);
-      alert("Submitted successfully!");
-      window.location.reload();
+      try {
+        await axios.post("http://localhost:8000/users/signUp", userDetails);
+        alert("Submitted successfully!");
+        // TODO : try to empty fields without reload.
+        window.location.reload();
+      } catch (error) {
+        seterror("ACCOUNT WITH SAME USERNAME EXISTS!");
+        // console.log(error, " hi");
+      }
     }
   };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Make an account, go ahead its free</h1>
@@ -44,6 +64,8 @@ function Signup() {
             name="username"
             onChange={handleChange}
             value={userDetails.username}
+            placeholder="Username"
+            required
           />
         </label>
         <label htmlFor="password" className={styles.label}>
@@ -53,6 +75,8 @@ function Signup() {
             name="password"
             onChange={handleChange}
             value={userDetails.password}
+            placeholder="Password"
+            required
           />
         </label>
         <label htmlFor="confirmPassword" className={styles.label}>
@@ -62,18 +86,15 @@ function Signup() {
             name="confirmPassword"
             onChange={handleChange}
             value={userDetails.confirmPassword}
+            placeholder="Confirm Password"
+            required
           />
         </label>
         <button onClick={handleSubmit} className={styles.button}>
           Sign Up
         </button>
+        {error.length !== 0 && <div className={styles.error}>{error}</div>}
       </form>
-      {error && (
-        <div className={styles.error}>
-          Make sure password and confirm Password are same or try another
-          Username.
-        </div>
-      )}
     </div>
   );
 }
