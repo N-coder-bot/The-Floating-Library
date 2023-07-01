@@ -1,0 +1,90 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+    border-radius: 0.3rem;
+    gap:2rem;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:white;
+    gap:2rem;
+    flex-wrap: wrap;
+    padding:3rem;
+    height: 100vh;
+    min-height: 500px;
+    max-height: 600px;
+}
+.label>span{
+    font-family: "AppleRegular";
+    font-size: larger;
+    width:12rem;
+}
+.title{
+    font-family: "AppleRegular";
+    color:black;
+    text-align: center;
+    transition: 0.3s;
+}
+.title:hover{
+    transform: scale(1.1);
+    color:#606C5D;
+    cursor: none;
+}
+.form input{
+   background-color: transparent;
+    color: black;
+    font-family: AppleLight;
+    padding:0.7rem;
+    outline: none;
+    border-radius: 1rem;
+    border:1px solid black;
+    transition: all 0.1s;
+}
+
+.label{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.button{
+   font-size: larger;
+   width: 20%;
+   padding:0.3rem 0rem 0.3rem 0rem;
+   text-align: center;
+   background-color: transparent;
+   font-family: "AppleMedium";
+   border:0.1rem solid white;
+   border-radius: 1rem;
+   transition-duration:0.3s;
+   -webkit-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+}
+.button:hover{
+    cursor:pointer;
+    border-color:black;
+    color:black;
+    background-color: white;
+    -webkit-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+    
+}
+.error{
+    color:#272343;
+    font-family: AppleLight;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #BAE8E8;
+    padding:1.3rem;
+    border-radius: 0.75rem;
+}
