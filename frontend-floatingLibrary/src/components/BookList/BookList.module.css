@@ -1,0 +1,77 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding:1rem;
+  text-transform: capitalize;
+}
+
+.card {
+  background-color: #272343;
+  padding:0.2rem;
+  margin: 0.3rem;
+  display: flex;
+  flex-direction: column; /* Added */
+  /* justify-content: space-between; */
+  border-radius: 0.75rem;
+}
+
+.cardList {
+  list-style: none;
+  padding:1rem;
+  /* width: 100%; */
+}
+
+.cardListItem {
+  margin-top: 1rem;
+  display: flex;
+  /* flex-direction: column; */
+  font-size: 1.2rem;
+  color: white;
+  /* width: 100%; */
+  font-family: AppleRegular;
+}
+.fetched{
+    margin-left: 1.5rem;
+    font-family   : AppleLight;
+    word-break: break-word;
+    text-transform: lowercase;
+}
+.cardListItem span {
+    text-align: left;
+    position: relative;
+}
+
+.showmore{
+    position: absolute;
+    top:10px;
+    width:200px;
+    word-break: break-word;
+    background-color: aliceblue;
+    color:black;
+    padding:1rem;
+    z-index: 100;
+    animation: appear 0.7s ease;
+    border-radius: 0.75rem;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.btn{
+    background-color: transparent;
+    border: none;
+    color:white;
+    border-radius:0.3rem;
+    transition: all 0.3s;
+    font-family: AppleLight;
+    margin: 1.7rem 0 0 2rem;
+
+}
+.btn:hover {
+    background-color: #BAE8E8;
+    color:black;
+}
