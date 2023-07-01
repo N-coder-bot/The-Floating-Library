@@ -13,6 +13,7 @@ const UserProvider = ({ children }) => {
             Authorization: `${localStorage.getItem("token")}`,
           },
         });
+        console.log(response.data.user);
         setUser(response.data.user);
       } catch (error) {
         console.log("Error fetching user:", error);
