@@ -6,21 +6,21 @@ const {
   userSignup,
   getUser,
   updateUser,
+  getBooks,
 } = require("../controllers/userController");
 const auth = require("../middlewares/auth");
 const verify = require("../middlewares/verify");
 require("../config/passport");
-//user signup .
+//user signup.
 router.post("/signUp", userSignup);
-//user login .
+//user login.
 router.post("/login", userLogin);
 //user verify.
 router.get("/verify", auth, verify);
 //get user.
 router.get("/user", auth, getUser);
-//update user
+//update user.
 router.put("/updateUser/:id", auth, updateUser);
-// router.get("/login", (req, res) => {
-//   res.render("login");
-// });
+//get user specific books.
+router.get("/user/books", auth, getBooks);
 module.exports = router;
