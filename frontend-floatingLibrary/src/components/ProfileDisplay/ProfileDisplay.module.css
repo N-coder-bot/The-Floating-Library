@@ -1,0 +1,51 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin:1rem;
+}
+.form input{
+    background-color: transparent;
+    color: black;
+    font-family: AppleLight;
+    padding:0.7rem;
+    outline: none;
+    border-radius: 1rem;
+    border:1px solid black;
+    transition: all 0.1s;
+}
+.title{
+    text-align: center;
+    color:#4DB6AC;
+    margin-top: 0.75rem;
+}
+#goback{
+    width:5rem;
+}
+.error{
+    color:#272343;
+    font-family: AppleLight;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #BAE8E8;
+    padding:1.3rem;
+    border-radius: 0.75rem;
+}
+
+.btn{
+    background-color: #272343;
+    border: none;
+    color:#FFFFFF;
+    border-radius:0.3rem;
+    padding:0.2rem;
+    width:10rem;
+    transition: all 0.3s;
+    font-family: AppleLight;
+    margin: 1.7rem 0 0 2rem;
+
+}
+.btn:hover {
+    background-color: #4DB6AC;
+    color:black;
+}
