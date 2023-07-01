@@ -1,3 +1,21 @@
 .container{
-    border:1px solid blue;
+    margin: 1rem 0rem 0rem 1rem;
+}
+.searchInput{
+    color: black;
+    font-family: AppleLight;
+    padding: 0.7rem;
+    outline: none;
+    border-radius: 1rem;
+    border: 1px solid black;
+    transition: all 0.1s;
+    margin: inherit;
+
+}
+.searchInput:focus{
+    text-decoration: none;
+    outline: none;
+}
+.bookDisplay{
+    margin: inherit
 }

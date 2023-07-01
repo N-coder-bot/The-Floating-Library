@@ -7,6 +7,7 @@
     /* justify-content: space-between; */
     position: relative;
     border-radius: 0.75rem;
+    width: fit-content;
   }
   
   .cardList {

@@ -1,4 +1,9 @@
 import styles from "./App.module.css";
+import "./assests/fonts/SF-Pro-Display-Thin.ttf";
+import "./assests/fonts/SF-Pro-Display-Black.ttf";
+import "./assests/fonts/SF-Pro-Display-Medium.ttf";
+import "./assests/fonts/SF-Pro-Display-Light.ttf";
+
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./Pages/Home/Home";
@@ -7,10 +12,6 @@ import Addbook from "./Pages/AddBook/Addbook";
 import AddAuthor from "./Pages/AddAuthor/AddAuthor";
 import Profile from "./Pages/Profile/Profile";
 import Unauthorized from "./Pages/Unauthorized/Unauthorized";
-import "./assests/fonts/SF-Pro-Display-Thin.ttf";
-import "./assests/fonts/SF-Pro-Display-Black.ttf";
-import "./assests/fonts/SF-Pro-Display-Medium.ttf";
-import "./assests/fonts/SF-Pro-Display-Light.ttf";
 import AddGenre from "./Pages/AddGenre/AddGenre";
 import Login from "./Pages/Login/Login";
 import { useState, useEffect, useContext } from "react";

@@ -5,15 +5,15 @@ align-items: center;
 font-family: "AppleMedium";
 height: 100%;
 }
-.title{
+#title{
     font-family: "AppleRegular";
     color:white;
 }
 
-.text{
+#text{
     font-size: 2.5rem;
     margin-left: 1rem;
-    color:#214778;
+    color:#BAE8E8;
     cursor:pointer;
     animation: appear 2s  1 forwards;
 }

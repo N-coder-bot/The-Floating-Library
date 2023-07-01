@@ -20,6 +20,7 @@ function SearchBook({ books }) {
         type="text"
         placeholder="Search By Title"
         onChange={handleSearch}
+        className={styles.searchInput}
       />
       <div className={styles.bookDisplay}>
         {found.map((book) => {

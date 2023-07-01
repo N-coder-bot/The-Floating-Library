@@ -1,11 +1,29 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
+import { useEffect } from "react";
 function Home() {
+  useEffect(() => {
+    // Check if it's the first visit.
+
+    const isFirstVisit = localStorage.getItem("isFirstVisit") === null;
+
+    if (isFirstVisit) {
+      localStorage.setItem("isFirstVisit", "false");
+    } else {
+      // disabling animations on consequent visits.
+      const elements = document.querySelectorAll("*");
+
+      elements.forEach((element) => {
+        element.style.animation = "none"; // this is necessary to remove animation.
+        element.style.opacity = 1; // this is so the elements are by default in opacity 1.
+      });
+    }
+  }, []);
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>
-        About <span className={styles.text}>This Library</span>
+      <h2 id={styles.title}>
+        About <span id={styles.text}>This Library</span>
       </h2>
       <div className={styles.box}>
         <div className={styles.card}>

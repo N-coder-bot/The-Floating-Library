@@ -15,7 +15,6 @@
     max-height: 640px;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    border:1px solid red;
 }
 .profileContainer{
     width: 30%;
@@ -29,7 +28,7 @@
     display: none;
   }
   
-  .btn{
+.btn{
     background-color: #272343;
     border: none;
     color:#FFFFFF;
@@ -38,9 +37,16 @@
     width:10rem;
     transition: all 0.3s;
     font-family: AppleLight;
-
 }
 .btn:hover {
     background-color: #4DB6AC;
     color:black;
+}
+.tag{
+    text-align: center;
+    margin:5rem;
+    text-transform: capitalize;
+    color:#272343;
+    font-family: "AppleRegular";
+    font-size: inherit;
 }
