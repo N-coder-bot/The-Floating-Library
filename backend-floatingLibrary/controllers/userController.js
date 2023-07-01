@@ -81,9 +81,7 @@ const updateUser = async (req, res) => {
       updatedUser = await User.findOneAndUpdate(
         { _id: req.params.id },
         { username: newUsername, password: hash },
-        {
-          new: true,
-        }
+        { new: true }
       );
     }
     //send successfully updated message.
@@ -93,4 +91,15 @@ const updateUser = async (req, res) => {
     res.status(400).json({ error: "ALREADY EXISTS!" });
   }
 };
-module.exports = { userLogin, userSignup, getUser, updateUser };
+
+//get user specific books.
+const getBooks = async (req, res) => {
+  const user = req.user;
+  await User.populate(user, {
+    path: "books",
+    populate: [{ path: "genre" }, { path: "author" }],
+  });
+  // console.log(user.books);
+  res.json(user.books);
+};
+module.exports = { userLogin, userSignup, getUser, updateUser, getBooks };
