@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Signup.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function Signup() {
   const Detail = {
     username: "",
@@ -42,7 +43,10 @@ function Signup() {
       seterror("Password and Confirm Password must be same");
     } else {
       try {
-        await axios.post("http://localhost:8000/users/signUp", userDetails);
+        await axios.post(
+          "https://the-floating-library-server-production.up.railway.app/users/signUp",
+          userDetails
+        );
         alert("Submitted successfully!");
         // TODO : try to empty fields without reload.
         window.location.reload();
@@ -55,8 +59,10 @@ function Signup() {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>Sign Up</h1>
       <h1 className={styles.title}>Make an account, go ahead its free</h1>
-      <form className={styles.form}>
+
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="username" className={styles.label}>
           <span>Name</span>
           <input
@@ -90,11 +96,14 @@ function Signup() {
             required
           />
         </label>
-        <button onClick={handleSubmit} className={styles.button}>
+        <button type="submit" className={styles.button}>
           Sign Up
         </button>
-        {error.length !== 0 && <div className={styles.error}>{error}</div>}
+        <h2 className={styles.title}>
+          Existing User? <Link to="/Login">Log In</Link>
+        </h2>
       </form>
+      {error.length !== 0 && <div className={styles.error}>{error}</div>}
     </div>
   );
 }

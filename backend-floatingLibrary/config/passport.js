@@ -2,9 +2,10 @@ const passport = require("passport");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/User");
+require("dotenv").config();
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "adddadd",
+  secretOrKey: `${process.env.secretOrKey}`,
 };
 
 // The JWT payload is passed into the verify callback

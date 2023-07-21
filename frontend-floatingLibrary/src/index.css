@@ -50,3 +50,17 @@
     src: local("AppleMedium"),
       url("./assests/fonts/SF-Pro-Display-Medium.ttf") format("truetype");
   }
+  a {
+    text-decoration: none;
+    color:rgb(29 223 132);
+  }
+  @media (min-width: 1820px) {
+    html {
+      font-size: 30px;
+    }
+  }
+  @media (min-width: 375px) {
+    html {
+      font-size: 9px;
+    }
+  }

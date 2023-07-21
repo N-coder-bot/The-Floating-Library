@@ -1,9 +1,13 @@
 
 
 .header{
-    margin: 1rem;
+    margin: 1rem auto;
     display: flex;
     justify-content: space-around;
+    max-width: 1920px;
+    @media (min-width: 375px) {
+        margin-top: 2rem;
+      }
 }
 
 .options{

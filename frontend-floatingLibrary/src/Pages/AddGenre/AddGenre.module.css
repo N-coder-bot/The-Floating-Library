@@ -6,17 +6,8 @@
     gap:2rem;
     flex-wrap: wrap;
     padding:3rem;
-    min-height: 500px;
-    max-height: 600px;
 }
-@keyframes appear{
-    from{
-        opacity:0;
-    }
-    to{
-        opacity:1;  
-    }
-}
+
 label>span {
     font-family:"AppleRegular"
 }
@@ -51,17 +42,19 @@ label>span {
     width: 10%;
 } */
 
-input{
+.textfield{
     background-color: transparent;
     color: black;
     font-family: AppleLight;
-    padding:0.7rem;
+    padding: 0.7rem;
     outline: none;
     border-radius: 1rem;
-    border:1px solid black;
+    border: 1px solid black;
     transition: all 0.1s;
 }
-
+.labels{
+    font-size: 1.2rem;
+}
 select {
     appearance: none;
     background-color: transparent;
@@ -77,14 +70,7 @@ select {
 select::-ms-expand {
     display: none;
 }
-label > a{
-    text-decoration: none;
-    font-family: inherit;
-    padding:0.75rem;
-    background-color:lightblue;
-    border-radius: 0.75rem;
-    color:black;
-}
+
 select{
     background-color: transparent;
     max-width: 260px;
@@ -120,4 +106,29 @@ select{
  -moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
  box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
      
+ }
+ @media (min-width: 375px) {
+    .labels {
+        display: none;
+    }
+    .addform input{
+        width: 100%;
+        border-top:none;
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+    }
+    .container{
+        padding:1rem;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+    }
+    .links{
+        width: 100%;
+        text-align: center;
+    }
+    .button{
+        width: 100%;
+    }
  }

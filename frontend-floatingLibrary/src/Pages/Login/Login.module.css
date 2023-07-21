@@ -9,14 +9,12 @@
 }
 .container{
     display: flex;
+    position: relative;
     flex-direction: column;
-    align-items: center;
     background-color:white;
     gap:2rem;
     flex-wrap: wrap;
     padding:3rem;
-    min-height: 500px;
-    max-height: 600px;
 }
 .label>span{
     font-family: "AppleRegular";
@@ -35,7 +33,7 @@
     cursor: none;
 }
 .form input{
-    background-color: transparent;
+   background-color: transparent;
     color: black;
     font-family: AppleLight;
     padding:0.7rem;
@@ -46,36 +44,37 @@
 }
 
 .label{
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
 }
 .button{
-    font-size: larger;
-    width: 20%;
-    padding:0.3rem 0 0.3rem 0;
-    text-align: center;
-    background-color: transparent;
-    font-family: "AppleMedium";
-    border:0.1rem solid white;
-    border-radius: 1rem;
-    transition-duration:0.3s;
-    -webkit-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
- -moz-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
- box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
- }
- .button:hover{
-     cursor:pointer;
-     border-color:black;
-     color:black;
-     background-color: white;
-     -webkit-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
- -moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
- box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
-     
- }
- .error{
+   font-size: larger;
+   width: 20%;
+   padding:0.3rem 0rem 0.3rem 0rem;
+   text-align: center;
+   background-color: transparent;
+   font-family: "AppleMedium";
+   border:0.1rem solid white;
+   border-radius: 1rem;
+   transition-duration:0.3s;
+   -webkit-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+    box-shadow: 2px -1px 19px -5px rgba(0,0,0,0.75);
+}
+.button:hover{
+    cursor:pointer;
+    border-color:black;
+    color:black;
+    background-color: white;
+    -webkit-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+    box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
+}
+.error{
+    position: absolute;
     color:#272343;
     font-family: AppleLight;
     font-weight: bolder;
@@ -85,3 +84,27 @@
     padding:1.3rem;
     border-radius: 0.75rem;
 }
+
+@media (min-width: 375px) {
+    .label>span {
+        display: none;
+    }
+    .form input{
+        width: 100%;
+        border-top:none;
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+    }
+    .container{
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    }
+    .button{
+        width: 100%;
+    }
+    .error {
+        bottom:10%;
+    }
+  }

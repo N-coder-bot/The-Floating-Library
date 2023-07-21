@@ -17,7 +17,7 @@ function AddGenre() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.post(
-      "http://localhost:8000/catalog/genre/create",
+      "https://the-floating-library-server-production.up.railway.app/catalog/genre/create",
       genreDetails,
       {
         withCredentials: true,
@@ -45,6 +45,7 @@ function AddGenre() {
             onChange={handleChange}
             value={genreDetails.name}
             placeholder="Enter New Genre"
+            className={styles.textfield}
           />
         </label>
         <button type="submit" className={styles.button}>

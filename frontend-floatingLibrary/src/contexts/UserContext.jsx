@@ -7,12 +7,15 @@ const UserProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/users/user", {
-          withCredentials: true,
-          headers: {
-            Authorization: `${localStorage.getItem("token")}`,
-          },
-        });
+        const response = await axios.get(
+          "https://the-floating-library-server-production.up.railway.app/users/user",
+          {
+            withCredentials: true,
+            headers: {
+              Authorization: `${localStorage.getItem("token")}`,
+            },
+          }
+        );
         console.log(response.data.user);
         setUser(response.data.user);
       } catch (error) {

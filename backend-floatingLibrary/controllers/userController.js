@@ -14,7 +14,7 @@ const userLogin = async (req, res, next) => {
       sub: user._id,
       iat: Date.now(),
     };
-    const signedToken = jwt.sign(payload, "adddadd", {
+    const signedToken = jwt.sign(payload, `${process.env.secretOrKey}`, {
       expiresIn,
     });
     res.json({ token: "Bearer " + signedToken, expiresIn });

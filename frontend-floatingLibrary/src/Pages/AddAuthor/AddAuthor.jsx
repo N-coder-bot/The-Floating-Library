@@ -26,7 +26,7 @@ function AddAuthor() {
     e.preventDefault();
     const token = localStorage.getItem("token");
     await axios.post(
-      "http://localhost:8000/catalog/author/create",
+      "https://the-floating-library-server-production.up.railway.app/catalog/author/create",
       authorDetails,
       {
         withCredentials: true,

@@ -15,14 +15,10 @@ function Addbook() {
   };
 
   const [bookdetails, setbookdetails] = useState(details);
-  const changeTheme = () => {
-    var r = document.querySelector(":root");
-    r.style.setProperty("--header", "blueviolet");
-    r.style.setProperty("--hover", "white");
-    r.style.setProperty("--background", "black");
-  };
   const getAuthors = async () => {
-    const response = await axios.get("http://localhost:8000/catalog/authors");
+    const response = await axios.get(
+      "https://the-floating-library-server-production.up.railway.app/catalog/authors"
+    );
     setauthors(response.data);
     let data = response.data;
     details.author = data[0];
@@ -32,7 +28,9 @@ function Addbook() {
     }));
   };
   const getGenres = async () => {
-    const response = await axios.get("http://localhost:8000/catalog/genres");
+    const response = await axios.get(
+      "https://the-floating-library-server-production.up.railway.app/catalog/genres"
+    );
     setgenres(response.data);
     let data = response.data;
     details.genre = data[0];
@@ -45,7 +43,6 @@ function Addbook() {
   useEffect(() => {
     getAuthors();
     getGenres();
-    changeTheme();
   }, []);
 
   const handleChange = (e) => {
@@ -64,10 +61,14 @@ function Addbook() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8000/catalog/book/create", bookdetails, {
-      withCredentials: true,
-      headers: { Authorization: `${localStorage.getItem("token")}` },
-    });
+    await axios.post(
+      "https://the-floating-library-server-production.up.railway.app/catalog/book/create",
+      bookdetails,
+      {
+        withCredentials: true,
+        headers: { Authorization: `${localStorage.getItem("token")}` },
+      }
+    );
     alert("book added successfully!");
     window.location.reload();
     // console.log(bookdetails);
@@ -80,22 +81,27 @@ function Addbook() {
       <form className={styles.addform}>
         <label htmlFor="author">
           <span className={styles.labels}>Author:</span>
-          <select
-            name="author"
-            id="author"
-            onChange={handleChange}
-            className={styles.select}
-            value={JSON.stringify(bookdetails.author)}
-          >
-            {/* <option value="author">Author</option> */}
-            {authors.map((author, index) => (
-              <option value={JSON.stringify(author)} key={index}>
-                {author.first_name + " " + author.family_name}
-              </option>
-            ))}
-          </select>
+          {authors.length !== 0 ? (
+            <select
+              name="author"
+              id="author"
+              onChange={handleChange}
+              className={styles.select}
+              value={JSON.stringify(bookdetails.author)}
+            >
+              {authors.map((author, index) => (
+                <option value={JSON.stringify(author)} key={index}>
+                  {author.first_name + " " + author.family_name}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <></>
+          )}
 
-          <Link to="/Addauthor">Add author</Link>
+          <Link to="/Addauthor" className={styles.links}>
+            Add author
+          </Link>
         </label>
         <label htmlFor="title">
           <span className={styles.labels}>Title of Book:</span>
@@ -123,21 +129,27 @@ function Addbook() {
 
         <label htmlFor="genre">
           <span className={styles.labels}>Genre:</span>
-          <select
-            name="genre"
-            id="genre"
-            onChange={handleChange}
-            value={JSON.stringify(bookdetails.genre)}
-            className={styles.select}
-          >
-            {/* <option value="genre">genre</option> */}
-            {genres.map((genre, index) => (
-              <option value={JSON.stringify(genre)} key={index}>
-                {genre.name}
-              </option>
-            ))}
-          </select>
-          <Link to="/Addgenre">Add genre</Link>
+          {genres.length !== 0 ? (
+            <select
+              name="genre"
+              id="genre"
+              onChange={handleChange}
+              value={JSON.stringify(bookdetails.genre)}
+              className={styles.select}
+            >
+              {/* <option value="genre">genre</option> */}
+              {genres.map((genre, index) => (
+                <option value={JSON.stringify(genre)} key={index}>
+                  {genre.name}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <></>
+          )}
+          <Link to="/Addgenre" className={styles.links}>
+            Add genre
+          </Link>
         </label>
         <button onClick={handleSubmit} className={styles.button}>
           Add book

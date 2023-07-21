@@ -6,8 +6,6 @@
     gap:2rem;
     flex-wrap: wrap;
     padding:3rem;
-    min-height: 500px;
-    max-height: 600px;
 }
 @keyframes appear{
     from{
@@ -27,6 +25,9 @@
     transform: scale(1.1);
     color:#606C5D;
     cursor: none;
+}
+.labels{
+    font-size: 1.2rem;
 }
 .form{
     display: flex;
@@ -91,4 +92,29 @@ input[type=date]{
  -moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
  box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
      
+ }
+ @media (min-width: 375px) {
+    .labels {
+        display: none;
+    }
+    .form input{
+        width: 100%;
+        border-top:none;
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+    }
+    .container{
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    }
+    .links{
+        width: 100%;
+        text-align: center;
+    }
+    .button{
+        width: 100%;
+    }
  }

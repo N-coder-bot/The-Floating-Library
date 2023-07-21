@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Login.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function Login() {
   const Detail = {
     username: "",
@@ -32,7 +33,7 @@ function Login() {
     // console.log(userDetails);
     try {
       const response = await axios.post(
-        "http://localhost:8000/users/login",
+        "https://the-floating-library-server-production.up.railway.app/users/login",
         userDetails,
         {
           withCredentials: true,
@@ -56,7 +57,7 @@ function Login() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Login to your Account.</h1>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="username" className={styles.label}>
           <span>Name</span>
           <input
@@ -79,10 +80,13 @@ function Login() {
             required
           />
         </label>
-        <button onClick={handleSubmit} className={styles.button}>
+        <button type="submit" className={styles.button}>
           Login
         </button>
       </form>
+      <h2 className={styles.title}>
+        Don't have an account? <Link to="/SignUp">Sign Up</Link>
+      </h2>
       {error.length !== 0 && <div className={styles.error}>{error}</div>}
     </div>
   );

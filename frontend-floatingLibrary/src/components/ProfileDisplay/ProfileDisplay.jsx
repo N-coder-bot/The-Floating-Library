@@ -26,7 +26,7 @@ function ProfileDisplay({ user }) {
       try {
         const data = { username, password };
         await axios.put(
-          `http://localhost:8000/users/updateUser/${user._id}`,
+          `https://the-floating-library-server-production.up.railway.app/users/updateUser/${user._id}`,
           data,
           {
             withCredentials: true,

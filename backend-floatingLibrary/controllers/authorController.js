@@ -1,5 +1,5 @@
 //acquiring Author model.
-const Author = require("../models/author");
+const Author = require("../models/Author");
 
 //Display list of all authors.
 

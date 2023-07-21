@@ -6,16 +6,6 @@
     gap:2rem;
     flex-wrap: wrap;
     padding:3rem;
-    min-height: 500px;
-    max-height: 600px;
-}
-@keyframes appear{
-    from{
-        opacity:0;
-    }
-    to{
-        opacity:1;  
-    }
 }
 
 .title{
@@ -76,12 +66,13 @@ select::-ms-expand {
     display: none;
 }
 label > a{
-    text-decoration: none;
-    font-family: inherit;
     padding:0.75rem;
+    text-decoration: none;
+    font-family: "AppleRegular";
     background-color:lightblue;
     border-radius: 0.75rem;
     color:black;
+    font-size: 1.2rem;
 }
 select{
     background-color: transparent;
@@ -94,7 +85,9 @@ select{
     border:1px solid black;
     transition: all 0.1s;
 }
-
+.labels{
+    font-size: 1.2rem;
+}
 .button{
     font-size: larger;
     width: 20%;
@@ -118,4 +111,29 @@ select{
  -moz-box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
  box-shadow: 4px 4px 0px 3px rgba(0,0,0,0.75);
      
+ }
+ @media (min-width: 375px) {
+    .labels {
+        display: none;
+    }
+    .addform input{
+        width: 100%;
+        border-top:none;
+        border-left: none;
+        border-radius: 0;
+        border-right: none;
+    }
+    .container{
+        padding:1rem;
+        justify-content: center;
+        align-items: center;
+        height: 60vh;
+    }
+    .links{
+        width: 100%;
+        text-align: center;
+    }
+    .button{
+        width: 100%;
+    }
  }

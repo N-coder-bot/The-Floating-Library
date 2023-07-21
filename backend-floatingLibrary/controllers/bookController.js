@@ -1,6 +1,6 @@
-const Book = require("../models/book");
-const Author = require("../models/author");
-const Genre = require("../models/genre");
+const Book = require("../models/Book");
+const Author = require("../models/Author");
+const Genre = require("../models/Genre");
 const User = require("../models/User");
 
 //1. --- Display list of all books ---

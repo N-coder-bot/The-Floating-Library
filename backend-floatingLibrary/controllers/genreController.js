@@ -1,4 +1,4 @@
-const Genre = require("../models/genre");
+const Genre = require("../models/Genre");
 
 // Display list of all Genre.
 exports.genre_list = async (req, res) => {

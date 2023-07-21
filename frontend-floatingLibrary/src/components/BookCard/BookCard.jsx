@@ -56,7 +56,7 @@ function BookCard({ book, onDelete }) {
         onClick={async () => {
           setDisplay("none");
           await axios.delete(
-            `http://localhost:8000/catalog/book/delete/${_id}`,
+            `https://the-floating-library-server-production.up.railway.app/catalog/book/delete/${_id}`,
             {
               withCredentials: true,
               headers: {
